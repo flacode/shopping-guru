@@ -1,0 +1,12 @@
+body {
+    padding: 50px;
+}
+h1 {
+    text-align: center;
+}
+#forms {
+    margin-left: 30px;
+}
+header, footer{
+    background:#89CFF0;
+}
