@@ -10,7 +10,9 @@ Day one activity:
 Designed wireframes using balsamiq and User Interfaces using HTML and CSS
 
 Day two and three activities:
+
 Used Test Driven Development(TDD) and OOP to implement the functionality.
+
 Intergrated this functionality with User Interfaces developed on Day 1.
 
 Day four activities:
@@ -19,3 +21,5 @@ Added TravisCI for continuous integration and badge  [![Build Status](https://tr
 Added configuration file for houndCI
 
 Added Coveralls and badge [![Coverage Status](https://coveralls.io/repos/github/flacode/shopping-guru/badge.svg?branch=master)](https://coveralls.io/github/flacode/shopping-guru?branch=master)
+
+Added Code Climate CI [![Code Climate](https://codeclimate.com/github/flacode/shopping-guru.png)](https://codeclimate.com/github/flacode/shopping-guru)
