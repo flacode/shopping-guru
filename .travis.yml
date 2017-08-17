@@ -1,8 +1,8 @@
 language: python
 python:
   - "3.5"
-cache: pip
+# command to install dependencies
 install:
   - pip install -r requirements.txt
-script:
-  - py.test tests.py
+# command to run tests
+script: pytest
