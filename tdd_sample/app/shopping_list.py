@@ -1,19 +1,18 @@
 class ShoppingList(object):
     """Class with methods for a shopping list"""
 
-    def __init__(self, items=None):
+    def __init__(self, name, items=None):
+        self.name = name
         self.items = items or []
 
     def add_item_to_shopping_list(self, item):
         """add a single item to shopping list"""
         self.items.append(item)
-        return self.items
 
     def delete_item_from_shopping_list(self, item):
         """Delete item form shopping list"""
         if len(self.items) > 0 and item in self.items:
             self.items.remove(item)
-            return self.items
         else:
             raise ValueError
 

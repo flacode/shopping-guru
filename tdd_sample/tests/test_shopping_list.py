@@ -5,7 +5,7 @@ from app.shopping_list import ShoppingList
 class TestShoppingList(unittest.TestCase):
     """Test cases for the shopping list class"""
     def setUp(self):
-        self.my_list = ShoppingList()
+        self.my_list = ShoppingList('Flavia')
 
     def test_add_item_to_empty_shopping_list(self):
         """Test for add item to an empty list"""
@@ -35,15 +35,19 @@ class TestShoppingList(unittest.TestCase):
 
     def test_delete_item_from_empty_shopping_list(self):
         """Delete Item from empty shopping list"""
-        self.assertRaises(ValueError, self.my_list.delete_item_from_shopping_list, 'milk')
+        self.assertRaises(ValueError,
+                          self.my_list.delete_item_from_shopping_list, 'milk')
 
     def test_view_empty_shopping_list(self):
         """View empty shopping list"""
-        self.assertEqual(self.my_list.view_shopping_list(), [], msg="Can not display empty list")
+        self.assertEqual(self.my_list.view_shopping_list(), [],
+                         msg="Can not display empty list")
 
     def test_view_non_empty_shopping_list(self):
-        """View empty list with items"""
+        """View shopping list with items"""
         self.my_list.items.append('sugar')
         self.my_list.items.append('milk')
         self.my_list.items.append('coffee')
-        self.assertEqual(self.my_list.view_shopping_list(), ['sugar', 'milk', 'coffee'], msg='Can not display list correctly')
+        self.assertEqual(self.my_list.view_shopping_list(),
+                         ['sugar', 'milk', 'coffee'],
+                         msg='Can not display list correctly')
