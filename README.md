@@ -15,4 +15,7 @@ Intergrated this functionality with User Interfaces developed on Day 1.
 
 Day four activities:
 Added TravisCI for continuous integration and badge  [![Build Status](https://travis-ci.org/flacode/shopping-guru.png)](https://travis-ci.org/flacode/shopping-guru)
+
 Added configuration file for houndCI
+
+Added Coveralls and badge [![Coverage Status](https://coveralls.io/repos/github/flacode/shopping-guru/badge.svg?branch=master)](https://coveralls.io/github/flacode/shopping-guru?branch=master)
