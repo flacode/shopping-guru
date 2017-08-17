@@ -1,5 +1,0 @@
-{
-  "tests/test_customer.py": true,
-  "tests/test_customer.py::TestApplication::test_existing_user_login": true,
-  "tests/test_customer.py::TestApplication::test_non_user_login": true
-}
