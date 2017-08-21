@@ -10,3 +10,9 @@ h1 {
 header, footer{
     background:#89CFF0;
 }
+p.errors {
+    color: red;
+}
+section {
+    margin-left: 50px; 
+}
