@@ -10,7 +10,7 @@ h1 {
 header, footer{
     background:#89CFF0;
 }
-p.errors {
+.errors {
     color: red;
 }
 section {
