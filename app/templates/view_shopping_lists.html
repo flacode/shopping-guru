@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping Guru</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <header>
+            <h1> The Shopping Guru </h1>
+        </header>
+        <nav>
+            <a href="/{{ username }}/create">Create shopping list</a> | <a href="/logout">Logout</a>
+        </nav>
+        <section>
+            <p>Welcome {{ username }}.</p>
+            <ul>
+            {% if shopping_lists: %}
+                {% for count in range(num) %}
+                    <li><a href="/shoppinglist/items/{{ count }}/">{{ shopping_lists[count].name }}</a>  <a href="/{{count}}/delete">delete</a></li>
+                {% endfor %}
+            {% else %}
+                <p>Sorry, you dont have any shopping lists yet.</p>
+            {% endif %}
+            </ul>
+        </section>
+        <footer>
+            <p>&copy; flacode 2017</p>
+        </footer>
+    </body>
+</html>
