@@ -8,6 +8,7 @@ class ShoppingList(object):
     def add_item_to_shopping_list(self, item):
         """add a single item to shopping list"""
         self.items.append(item)
+        print("item added")
 
     def delete_item_from_shopping_list(self, item):
         """Delete item form shopping list"""
