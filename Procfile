@@ -1,2 +1,2 @@
-web: gunicorn app/customer/app.py
+web: gunicorn python app/customer.py
 # appfile:appname
