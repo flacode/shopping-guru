@@ -1,2 +1,3 @@
-web: gunicorn /app/customer.py:app
+web: gunicorn --chdir app customer:app
 # appfile:appname
+
