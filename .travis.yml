@@ -6,7 +6,7 @@ install:
   - pip install -r requirements.txt
 # command to run tests
 script: 
-  - pytest --cov tests
+  - python -m pytest --cov tests
 after_success:
   - coveralls
   - CODECLIMATE_REPO_TOKEN=<22fa03bb6f4705b08ee9f353272e8949975b8a669d43d8fbe98b5da6b93bbb30> codeclimate-test-reporter
