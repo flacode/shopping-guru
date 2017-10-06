@@ -23,3 +23,7 @@ Added configuration file for houndCI
 Added Coveralls and badge [![Coverage Status](https://coveralls.io/repos/github/flacode/shopping-guru/badge.svg)](https://coveralls.io/github/flacode/shopping-guru)
 
 Added Code Climate CI [![Code Climate](https://codeclimate.com/github/flacode/shopping-guru.png)](https://codeclimate.com/github/flacode/shopping-guru)
+
+How to use the application.
+1. Create a user account with shopping guru localhost:5000/register
+2. After registering, you will be promoted to login in order to view your shopping lists.
