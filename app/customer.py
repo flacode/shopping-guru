@@ -13,9 +13,6 @@ from shopping_list import ShoppingList
 app = Flask(__name__)
 app.secret_key = 'abcdefghijklmn'
 users = {}  # user[email]=user_object1
-users['flavianshemerirwe@yahoo.com'] = User('flacode', 'flavianshemerirwe@yahoo.com', '123')
-# for key in session.keys():
-#    session.pop[key]
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -83,31 +80,78 @@ def user_view_shopping_lists(loggedin_user):
 @app.route('/<loggedin_user>/create', methods=['POST', 'GET'])
 def user_create_shopping_list(loggedin_user):
     """Method for user to create shopping list"""
+    if 'email' not in session:
+        return render_template('login.html')
     user = users[session['email']]
     if request.method == 'POST':
         name = request.form['list_name']
         shopping_list = ShoppingList(name)
         user.create_shopping_list(shopping_list)
-        return redirect(url_for('user_add_items_to_shopping_list', num=len(user.shopping_lists)-1))
+        return redirect(url_for('user_add_items_to_shopping_list',
+                                num=len(user.shopping_lists)-1))
     return render_template('add_shopping_list.html', username=user.username)
+
+
+@app.route('/<loggedin_user>/update/<list_no>', methods=['POST', 'GET'])
+def user_update_shopping_list(loggedin_user, list_no):
+    """Method for user to update shopping list"""
+    if 'email' not in session:
+        return render_template('login.html')
+    user = users[session['email']]
+    if request.method == 'POST':
+        name = request.form['list_name']
+        user.shopping_lists[int(list_no)].name = name
+        return redirect(url_for('user_view_shopping_lists',
+                                loggedin_user=user.username))
+    return render_template('update_shopping_list.html',
+                           username=user.username,
+                           list_name=user.shopping_lists[int(list_no)].name)
 
 
 @app.route('/shoppinglist/<num>', methods=['POST', 'GET'])
 def user_add_items_to_shopping_list(num):
     """Method for user to add items to shopping list"""
+    if 'email' not in session:
+        return render_template('login.html')
     user = users[session['email']]
     if request.method == 'POST':
         item = request.form['item']
         qty = request.form['qty']
-        user.shopping_lists[int(num)].add_item_to_shopping_list(Item(item, qty))
+        user.shopping_lists[int(num)].add_item_to_shopping_list(Item(item, qty)
+                                                                )
+        return redirect(url_for('user_view_shopping_list_items',
+                                num=num))
+    return render_template('add_items.html', username=user.username)
+
+
+@app.route('/shoppinglist/<num>/item/<item_id>/update',
+           methods=['POST', 'GET'])
+def user_update_items_in_shopping_list(num, item_id):
+    """Method for user to add items to shopping list"""
+    if 'email' not in session:
+        return render_template('login.html')
+    user = users[session['email']]
+    shopping_list = user.shopping_lists[int(num)]
+    item = shopping_list.items[int(item_id)]
+    if request.method == 'POST':
+        update_item = request.form['item']
+        update_qty = request.form['qty']
+        item.name = update_item
+        item.quantity = update_qty
         return redirect(url_for('user_view_shopping_list_items',
                         num=num))
-    return render_template('add_items.html', username=user.username)
+    return render_template('update_items.html',
+                           username=user.username,
+                           item=item.name,
+                           quantity=item.quantity
+                           )
 
 
 @app.route('/<num>/delete')
 def user_delete_shopping_list(num):
     """User can delete shopping list"""
+    if 'email' not in session:
+        return render_template('login.html')
     try:
         user = users[session['email']]
         shopping_list = user.shopping_lists[int(num)]
@@ -122,16 +166,21 @@ def user_delete_shopping_list(num):
 @app.route('/shoppinglist/items/<num>/')
 def user_view_shopping_list_items(num):
     """Method to view items in shopping list"""
+    if 'email' not in session:
+        return render_template('login.html')
     user = users[session['email']]
     items = user.shopping_lists[int(num)].view_shopping_list()
     return render_template('shopping_list.html', items=items,
                            shopping_list=user.shopping_lists[int(num)].name,
-                           no_items=len(items), list_index=num, username=user.username)
+                           no_items=len(items), list_index=num,
+                           username=user.username)
 
 
 @app.route('/<list_index>/<item_index>/delete')
 def delete_item_from_shopping_list(list_index, item_index):
     """User can delete item from shopping list"""
+    if 'email' not in session:
+        return render_template('login.html')
     try:
         user = users[session['email']]
         shopping_list = user.shopping_lists[int(list_index)]
@@ -142,6 +191,7 @@ def delete_item_from_shopping_list(list_index, item_index):
     except ValueError:
         return redirect(url_for('user_view_shopping_list_items',
                                 num=list_index))
+
 
 @app.route('/logout')
 def logout():

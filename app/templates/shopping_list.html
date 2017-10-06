@@ -16,9 +16,9 @@
             <h1>Shopping List: {{ shopping_list }}.</h1>
             {% if items: %}
                 <table>
-                    <th>Item name</th><th>Quantity</th><th></th>
+                    <th>Item name</th><th>Quantity</th><th colspan="3">Actions</th>
                     {% for count in range(no_items) %}
-                        <tr><td>{{ items[count].name }}</td><td>{{ items[count].quantity }}</td><td><a href="/{{ list_index }}/{{ count }}/delete">delete</a></td></tr>
+                        <tr><td>{{ items[count].name }}</td><td>{{ items[count].quantity }}</td><td><a href="/shoppinglist/{{ list_index }}/item/{{ count }}/update">update</a></td><td><a href="/{{ list_index }}/{{ count }}/delete">delete</a></td></tr>
                     {% endfor %}
                 </table>
                 <a href="/shoppinglist/{{ list_index }}"><button>Add more items</button></a>

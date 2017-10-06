@@ -15,6 +15,7 @@ pep8==1.7.0
 py==1.4.34
 pylint==1.7.2
 pytest==3.2.1
+pytest-cov==2.5.1
 python-coveralls==2.9.1
 PyYAML==3.12
 requests==2.18.4

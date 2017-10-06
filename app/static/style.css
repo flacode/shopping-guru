@@ -16,3 +16,12 @@ header, footer{
 section {
     margin-left: 50px; 
 }
+table {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+button {
+    margin-left: 780px;
+}
