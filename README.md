@@ -20,6 +20,6 @@ Added TravisCI for continuous integration and badge  [![Build Status](https://tr
 
 Added configuration file for houndCI
 
-Added Coveralls and badge [![Coverage Status](https://coveralls.io/repos/github/flacode/shopping-guru/badge.svg?branch=master)](https://coveralls.io/github/flacode/shopping-guru?branch=master)
+Added Coveralls and badge [![Coverage Status](https://coveralls.io/repos/github/flacode/shopping-guru/badge.svg)](https://coveralls.io/github/flacode/shopping-guru)
 
 Added Code Climate CI [![Code Climate](https://codeclimate.com/github/flacode/shopping-guru.png)](https://codeclimate.com/github/flacode/shopping-guru)
