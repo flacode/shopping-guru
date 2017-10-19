@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Shopping Guru</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    </head>
-    <body>
-        <header>
-            <h1> The Shopping Guru </h1>
-        </header>
-        <nav>
-            <a href="/{{ username }}/shoppinglists">View shopping lists</a> | <a href="/logout">Logout</a>
-        </nav>
-        <section  class= "form_element">
-            <h2>Update Shopping List</h2>
-            <form method="post" action="" id="forms">
-                Name:<br>
-                <input type="text" name="list_name" size="40" value="{{ list_name }}" required><br><br>
-                <input type="submit" value="Update">
-                </form>
+{% extends "base_min.html" %}
+{% block content %}
+    <div class="container">
+        <section>
+            <div class="row">
+                <div class="col-sm-5 col-sm-offset-3">
+                    <h2>Update Shopping List</h2>
+                </div>
+            </div>    
+            <form method="post" action="">
+                <div class="row form-group">
+                    <div class="col-sm-5 col-sm-offset-4">
+                        <label>Name</label>
+                        <input type="text" name="list_name" class="form-control" value="{{ list_name }}" required>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-5 col-sm-offset-4">
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Update</button>
+                    </div>
+                </div>
+            </form>
         </section>
-        <footer>
-            <p>&copy; flacode 2017</p>
-        </footer>
-    </body>
-</html>
+    </div>
+{% endblock %}

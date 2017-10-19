@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <title>Shopping Guru</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="jumbotron text-center">
+                <h1> The Shopping Guru </h1>
+                <img src="{{ url_for('static', filename='images/shopping_list.jpg') }}" class="img-circle" alt="Sample photo" width="200" height="215">    
+            </div>   
+        </div>
+        {% block content %} {% endblock %}
+        <div class="container-fluid">
+            <!--Footer-->
+            <footer class="page-footer">
+                <!--Copyright-->
+                <div class="footer-copyright">
+                    © 2017 Copyright: flacode
+                </div>
+            <!--/.Copyright-->
+            </footer>
+            <!--/.Footer-->
+        </div>
+        
+        <!-- jQuery (necessary for Bootstrap’s JavaScript plugins) -->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+        <script src="{{ url_for('static', filename='jQuery/jquery-3.2.1.min.js') }}"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    </body>
+</html>

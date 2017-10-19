@@ -1,30 +1,125 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
         <title>Shopping Guru</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
         <header>
-            <h1> The Shopping Guru </h1>
+            <div class="container-fluid">
+                <nav class="navbar navbar-inverse">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span> 
+                        </button>
+                        <a class="navbar-brand" href="/{{ username }}/shoppinglists">SHOPPING GURU</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="/{{ username }}/shoppinglists">Home</a></li>
+                            <li><a href="/{{ username }}/create">Add shopping list</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <p class="navbar-text colored-text"><span class="glyphicon glyphicon-user"></span> {{ username }}</p>
+                            <li><a href="/logout"><span class="glyphicon glyphicon-log-out colored-text"></span> Logout</a></li>
+                        </ul>
+                    </div>
+               </nav>
+            </div>
+            <div class="row">
+                <div class="col-sm-offset-3">
+                    <h2>
+                        <span class="text-capitalize colored-text" >{{ username }}</span><span class="colored-text">'s</span> shopping lists.
+                        <a data-toggle="modal" data-target="#myList" class="btn btn-primary a-btn-slide-text col-sm-offset-3">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <span><strong>Add shopping list</strong></span>            
+                        </a>
+                        <div class="modal fade" id="myList" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close colored-background" data-dismiss="modal">
+                                            <span aria-hidden="true">&times;</span>
+                                            <span>Close</span>
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel">Create Shopping List.</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="/{{ username }}/create">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" name="list_name" class="form-control" autofocus required>
+                                            </div>
+                                            <div class="form-group text-right">
+                                                <button type="submit" class="btn btn-primary ">Create</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </h2>
+                </div>
+            </div><br>
         </header>
-        <nav>
-            <a href="/{{ username }}/create">Create shopping list</a> | <a href="/logout">Logout</a>
-        </nav>
         <section>
-            <h1>{{ username }}'s shopping lists.</h1>
-            {% if shopping_lists: %}
-                <table><th>Shopping list name</th><th colspan="2"> Actions</th>
-                {% for count in range(num) %}
-                    <tr><td><a href="/shoppinglist/items/{{ count }}/">{{ shopping_lists[count].name }}</a></td>  <td><a href="/{{ username }}/update/{{ count }}"> update</a></td> <td><a href="/{{count}}/delete">delete</a></td></tr>
-                {% endfor %}
-                </table>
-            {% else %}
-                <p>Sorry, you dont have any shopping lists yet.</p>
-            {% endif %}
+            <div class="container">
+                <div class=row>
+                    <div class="col-sm-offset-3 col-sm-7">
+                        {% if shopping_lists: %}
+                            <table class="table table-responsive table-hover">
+                                <th>Name</th><th></th>
+                                {% for count in range(num) %}
+                                    <tr>
+                                        <td>{{ count+1 }}. <span class="text-capitalize">{{ shopping_lists[count].name }}</span></td>
+                                        <td class="text-right">
+                                            <a href="/{{ username }}/update/{{ count }}" class="btn btn-primary a-btn-slide-text btn-xs">
+                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                                <span><strong>Update</strong></span>            
+                                            </a>
+                                            <a href="/shoppinglist/items/{{ count }}" class="btn btn-primary a-btn-slide-text btn-xs">
+                                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                                <span><strong>View</strong></span>            
+                                            </a>
+                                            <a onclick="return confirm('Are you sure you want to delete this shopping list?');" href="/{{count}}/delete" class="btn btn-danger a-btn-slide-text btn-xs">
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                <span><strong>Delete</strong></span>            
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        {% else %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-7 col-sm-offset-3 alert alert-info">
+                        <p>Sorry, you have not created any shopping lists yet.</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
         </section>
-        <footer>
-            <p>&copy; flacode 2017</p>
-        </footer>
+
+        <div class="container-fluid">
+            <!--Footer-->
+            <footer class="page-footer">
+                <!--Copyright-->
+                <div class="footer-copyright">
+                    © 2017 Copyright: flacode
+                </div>
+                <!--/.Copyright-->
+            </footer>
+            <!--/.Footer-->
+        </div>
+        <!-- jQuery (necessary for Bootstrap’s JavaScript plugins) -->
+        <script src="{{ url_for('static', filename='jQuery/jquery-3.2.1.min.js') }}"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     </body>
 </html>
