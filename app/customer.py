@@ -34,6 +34,7 @@ def user_create_account(username=None, email=None, password=None):
         confirm_password = request.form['confirm_password']
         if password == confirm_password:
             if users.__contains__(email):
+                print(users.keys())
                 return render_template("registration.html",
                                        error_msg="User already exists")
             else:

@@ -1,33 +1,57 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Shopping Guru</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    </head>
-    <body>
-        <header>
-            <h1> The Shopping Guru </h1>
-        </header>
-        <section  class= "form_element">
-            <h2>User Registration</h2>
-            {% if error_msg %}
-                <p class="errors"> {{ error_msg }} </p>
-            {% endif %}
-            <form method="post" action="/register" id="forms">
-                Username:<br>
-                <input type="text" name="username" size="40"><br>
-                E-mail:<br>
-                <input type="email" name="email" size="40"><br>
-                Password:<br>
-                <input type="password" name="password" size="40"><br>
-                Confirm password:<br>
-                <input type="password" name="confirm_password" size="40"><br>
-                <input type="submit" value="submit">
-                </form>
-                <p>Already have an account, please <a href="/login">login</a>
-        </section>
-        <footer>
-            <p>&copy; flacode 2017</p>
-        </footer>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <!-- Main navigation-->
+    <header>
+        <div class="row">
+            <div class="col-sm-5 col-sm-offset-3">
+                <h2>User Registration</h2>
+            </div>
+        </div>
+    </header>
+    <section>
+        {% if error_msg %}
+        <div class="row">
+            <div class="col-sm-5 col-sm-offset-4 alert alert-danger">
+                {{ error_msg }}
+            </div>
+        </div>
+        {% endif %}
+
+        <form method="post" action="/register" id="forms">
+            <div class="row form-group">
+                <div class="col-sm-5 col-sm-offset-4">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-5 col-sm-offset-4">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-5 col-sm-offset-4">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-5 col-sm-offset-4">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirm_password" class="form-control" required>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-5 col-sm-offset-4">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+                </div>
+            </div>
+        </form>
+        <div class="col-sm-5 col-sm-offset-4">
+            <p>Already have an account, please <a href="/login">login</a></p>
+        </div>
+    </section>
+</div>
+{% endblock %}

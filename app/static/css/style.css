@@ -1,0 +1,42 @@
+.jumbotron { 
+    background-color: #4ABDAC !important;
+    color: #ffffff !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    margin-top: 10px !important;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:focus  {
+    background-color: #4ABDAC !important;
+    border-color: #4ABDAC !important;
+}
+a {
+    color:#4ABDAC !important;
+}
+.page-footer{
+    background-color: #4ABDAC !important;
+    color: #ffffff !important;
+    padding: 10px !important;
+}
+.page-footer{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.btn{
+    color:white !important;
+}
+a span {
+    color: white !important;
+}
+.glyphicon{
+    color: #4ABDAC;
+}
+.colored-text{
+    color: #4ABDAC !important;
+}
+.modal-header{
+    background-color: black;
+    color:#4ABDAC;
+}
+.colored-background{
+    color:#82ECDC !important;
+}
