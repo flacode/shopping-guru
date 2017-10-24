@@ -1,3 +1,22 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+.page-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* Set the fixed height of the footer here */
+    height: 30px;
+    vertical-align: middle;
+}
+  
+
 .jumbotron { 
     background-color: #4ABDAC !important;
     color: #ffffff !important;
